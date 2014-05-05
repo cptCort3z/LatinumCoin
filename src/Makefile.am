@@ -23,7 +23,7 @@ endif
 SUBDIRS = . $(BUILD_QT) $(BUILD_TEST)
 DIST_SUBDIRS = . qt test
 .PHONY: FORCE
-# bitcoin core #
+# Latinumcoin core #
 BITCOIN_CORE_H = \
   addrman.h \
   alert.h \

@@ -90,7 +90,7 @@ bool AppInit(int argc, char* argv[])
                 _("Usage:") + "\n" +
                   "  latinumcoind [options]                     " + _("Start Latinumcoin Core Daemon") + "\n" +
                 _("Usage (deprecated, use latinumcoin-cli):") + "\n" +
-                  "  latinumcoind [options] <command> [params]  " + _("Send command to Bitcoin Core") + "\n" +
+                  "  latinumcoind [options] <command> [params]  " + _("Send command to Latinumcoin Core") + "\n" +
                   "  latinumcoind [options] help                " + _("List commands") + "\n" +
                   "  latinumcoind [options] help <command>      " + _("Get help for a command") + "\n";
 
