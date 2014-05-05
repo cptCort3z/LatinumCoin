@@ -158,11 +158,11 @@ latinumcoind_LDADD = \
 if ENABLE_WALLET
 latinumcoind_LDADD += libbitcoin_wallet.a
 endif
-latinumcoind_SOURCES = bitcoin.cpp
+latinumcoind_SOURCES = bitcoind.cpp
 #
 
 if TARGET_WINDOWS
-latinumcoind_SOURCES += bitcoin-res.rc
+latinumcoind_SOURCES += bitcoind-res.rc
 endif
 
 AM_CPPFLAGS += $(BDB_CPPFLAGS)
