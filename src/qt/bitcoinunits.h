@@ -23,9 +23,9 @@ public:
      */
     enum Unit
     {
-        BTC,
-        mBTC,
-        uBTC
+        LAT,
+        mLAT,
+        uLAT
     };
 
     //! @name Static API

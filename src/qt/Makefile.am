@@ -5,12 +5,12 @@ AM_CPPFLAGS += -I$(top_srcdir)/src \
   -I$(top_builddir)/src/qt/forms \
   $(PROTOBUF_CFLAGS) \
   $(QR_CFLAGS)
-bin_PROGRAMS = bitcoin-qt
+bin_PROGRAMS = latinumcoin-qt
 noinst_LIBRARIES = libbitcoinqt.a
 SUBDIRS = . $(BUILD_TEST_QT)
 DIST_SUBDIRS = . test
 
-# bitcoin qt core #
+# latinumcoin qt core #
 QT_TS = \
   locale/bitcoin_ach.ts \
   locale/bitcoin_af_ZA.ts \
