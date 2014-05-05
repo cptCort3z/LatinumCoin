@@ -158,26 +158,26 @@ latinumcoind_LDADD = \
 if ENABLE_WALLET
 latinumcoind_LDADD += libbitcoin_wallet.a
 endif
-latinumcoind_SOURCES = latinumcoin.cpp
+latinumcoind_SOURCES = bitcoin.cpp
 #
 
 if TARGET_WINDOWS
-latinumcoind_SOURCES += latinumcoin-res.rc
+latinumcoind_SOURCES += bitcoin-res.rc
 endif
 
 AM_CPPFLAGS += $(BDB_CPPFLAGS)
 latinumcoind_LDADD += $(BOOST_LIBS) $(BDB_LIBS)
 
-# latinumcoin-cli binary #
+# bitcoin-cli binary #
 latinumcoin_cli_LDADD = \
   libbitcoin_cli.a \
   libbitcoin_common.a \
   $(BOOST_LIBS)
-latinumcoin_cli_SOURCES = latinumcoin-cli.cpp
+latinumcoin_cli_SOURCES = bitcoin-cli.cpp
 #
 
 if TARGET_WINDOWS
-latinumcoin_cli_SOURCES += latinumcoin-cli-res.rc
+latinumcoin_cli_SOURCES += bitcoin-cli-res.rc
 endif
 
 # NOTE: This dependency is not strictly necessary, but without it make may try to build both in parallel, which breaks the LevelDB build system in a race
