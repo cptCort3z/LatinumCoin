@@ -47,7 +47,7 @@ public:
         //     CTxIn(COutPoint(000000, -1), coinbase 04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73)
         //     CTxOut(nValue=50.00000000, scriptPubKey=0x5F1DF16B2B704C8A578D0B)
         //   vMerkleTree: 4a5e1e
-        const char* pszTimestamp = "Bloomberg News May 05, 2014 Asia Stocks Drop on China While Ukraine Crisis Spurs Gold, Wheat";
+        const char* pszTimestamp = "The New York Times - MAY 7, 2014 - Researchers Report Breakthrough in Creating Artificial Genetic Code | Einewton, Shadowman, xPhantomx";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -58,9 +58,9 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime    = 1231006505;
+        genesis.nTime    = 1399488281;
         genesis.nBits    = 0x1d00ffff;
-        genesis.nNonce   = 2083236893;
+        genesis.nNonce   = 2272625693;
 
 		
 		hashGenesisBlock = genesis.GetHash();
@@ -69,14 +69,16 @@ public:
             hashGenesisBlock = genesis.GetHash();
         }
 		
-        hashGenesisBlock = genesis.GetHash();
+		
+		//hashGenesisBlock = genesis.GetHash();
 		
 		
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", genesis.hashMerkleRoot.ToString().c_str());
         printf("%x\n", bnProofOfWorkLimit.GetCompact());
 		genesis.print();
-        
+		
+		exit(0);
 		
         assert(hashGenesisBlock == uint256("0x000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"));
         assert(genesis.hashMerkleRoot == uint256("0x4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"));
