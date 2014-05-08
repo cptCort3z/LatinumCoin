@@ -41,13 +41,14 @@ public:
 
         // Build the genesis block. Note that the output of the genesis coinbase cannot
         // be spent as it did not originally exist in the database.
-        //
-        // CBlock(hash=000000000019d6, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=4a5e1e, nTime=1231006505, nBits=1d00ffff, nNonce=2083236893, vtx=1)
-        //   CTransaction(hash=4a5e1e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-        //     CTxIn(COutPoint(000000, -1), coinbase 04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73)
-        //     CTxOut(nValue=50.00000000, scriptPubKey=0x5F1DF16B2B704C8A578D0B)
-        //   vMerkleTree: 4a5e1e
-        const char* pszTimestamp = "The New York Times - MAY 7, 2014 - Researchers Report Breakthrough in Creating Artificial Genetic Code | Einewton, Shadowman, xPhantomx";
+		
+		//CBlock(hash=23b7c7959cfde48e7bebbec1761df82eb075aad3f85df667b5e29acffc8d2b76, ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000, hashMerkleRoot=e1853c83b009fdee7733c0266e5731d59a6729c2d8f45437a7d53b49ab668046, nTime=1399585216, nBits=1d00ffff, nNonce=0, vtx=1)
+		//  CTransaction(hash=e1853c83b009fdee7733c0266e5731d59a6729c2d8f45437a7d53b49ab668046, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+		//	CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d01044c8c546865204e657720596f726b2054696d6573202d204d415920382c2032303134202d20426172636c61797320746f20536872696e6b20496e766573746d656e742042616e6b20616e642043726561746520616e20496e7465726e616c20e280984261642042616e6be28099207c2045696e6577746f6e2c20536861646f776d616e2c20785068616e746f6d78)
+		//	CTxOut(nValue=50.00000000, scriptPubKey=04678afdb0fe5548271967f1a67130)
+		//  vMerkleTree: e1853c83b009fdee7733c0266e5731d59a6729c2d8f45437a7d53b49ab668046 
+
+        const char* pszTimestamp = "The New York Times - MAY 8, 2014 - Barclays to Shrink Investment Bank and Create an Internal 'Bad Bank' | Einewton, Shadowman, xPhantomx";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -58,30 +59,18 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime    = 1399488281;
+        genesis.nTime    = 1399585216;
         genesis.nBits    = 0x1d00ffff;
-        genesis.nNonce   = 2272625693;
-
+        genesis.nNonce   = 2275476893;
 		
 		hashGenesisBlock = genesis.GetHash();
-        while (hashGenesisBlock > bnProofOfWorkLimit.getuint256()){
-            if (++genesis.nNonce==0) break;
-            hashGenesisBlock = genesis.GetHash();
-        }
 		
-		
-		//hashGenesisBlock = genesis.GetHash();
-		
-		
-        printf("%s\n", hashGenesisBlock.ToString().c_str());
+		printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", genesis.hashMerkleRoot.ToString().c_str());
         printf("%x\n", bnProofOfWorkLimit.GetCompact());
-		genesis.print();
 		
-		exit(0);
-		
-        assert(hashGenesisBlock == uint256("0x000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"));
-        assert(genesis.hashMerkleRoot == uint256("0x4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"));
+        assert(hashGenesisBlock == uint256("fbe8d61daf10f84a82369fb3bb645f85637fc959aebe61a0ff385e8f138dfb5a"));
+        assert(genesis.hashMerkleRoot == uint256("fbc238e23568f60fa8ef1d48baa8a0a13d4ed9f081cd7997b760f125b76bc7c2"));
 
         vSeeds.push_back(CDNSSeedData("latinumcoin.org", "seed.latinumcoin.org"));
         vSeeds.push_back(CDNSSeedData("latinumcoin.org", "seed2.latinumcoin.org"));
@@ -140,10 +129,11 @@ public:
         strDataDir = "testnet3";
 
         // Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1296688602;
+        genesis.nTime = 1399517382;
         genesis.nNonce = 414098458;
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x000000000933ea01ad0ee984209779baaec3ced90fa3f408719526f8d77f4943"));
+		
+        assert(hashGenesisBlock == uint256("4827969f4f4f892cbea5ffe81817f0a96f9efacc28e3c680ed2114fea214a9a0"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -173,13 +163,18 @@ public:
         pchMessageStart[3] = 0xda;
         nSubsidyHalvingInterval = 150;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 1);
-        genesis.nTime = 1296688602;
+        genesis.nTime = 1399517382;
         genesis.nBits = 0x207fffff;
         genesis.nNonce = 2;
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 18444;
         strDataDir = "regtest";
-        assert(hashGenesisBlock == uint256("0x0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206"));
+
+		printf("%s\n", hashGenesisBlock.ToString().c_str());
+        printf("%s\n", genesis.hashMerkleRoot.ToString().c_str());
+        printf("%x\n", bnProofOfWorkLimit.GetCompact());
+		
+        assert(hashGenesisBlock == uint256("96a170dc90bd879d3b4100f9643c99d36e80e305b574bf279d2200c364bff8f9"));
 
         vSeeds.clear();  // Regtest mode doesn't have any DNS seeds.
     }
