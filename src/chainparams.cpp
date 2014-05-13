@@ -42,12 +42,12 @@ public:
         // Build the genesis block. Note that the output of the genesis coinbase cannot
         // be spent as it did not originally exist in the database.
         //
-        // CBlock(hash=000000000019d6, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=4a5e1e, nTime=1231006505, nBits=1d00ffff, nNonce=2083236893, vtx=1)
-        //   CTransaction(hash=4a5e1e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-        //     CTxIn(COutPoint(000000, -1), coinbase 04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73)
-        //     CTxOut(nValue=50.00000000, scriptPubKey=0x5F1DF16B2B704C8A578D0B)
-        //   vMerkleTree: 4a5e1e
-        const char* pszTimestamp = "The New York Times 07/May/2014 Researchers Report Breakthrough in Creating Artificial Genetic Code | Einewton, Shadowman, xPhantomx";
+        // CBlock(hash=7e46d2cb0315280ecb0fede6c7c8bff5df4a4b4caf8eaa27cc0c5c9a02076160, ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000, hashMerkleRoot=bd4bb0e2e80a16560b20caab40d22005b517ee177a19421f6fe7fca80027f045, nTime=1399949523, nBits=1d00ffff, nNonce=0, vtx=1)
+		//	CTransaction(hash=bd4bb0e2e80a16560b20caab40d22005b517ee177a19421f6fe7fca80027f045, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+		//		CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d01044c65434e4243202d204d41592031322c2032303134202d2041736961207368617265732072616c6c79206f6e2057616c6c205374726565742773207265636f72642068696768207c2045696e6577746f6e2c20536861646f776d616e2c20785068616e746f6d78)
+		//		CTxOut(nValue=50.00000000, scriptPubKey=04678afdb0fe5548271967f1a67130)
+		//	vMerkleTree: bd4bb0e2e80a16560b20caab40d22005b517ee177a19421f6fe7fca80027f045 
+        const char* pszTimestamp = "CNBC - MAY 12, 2014 - Asia shares rally on Wall Street's record high | Einewton, Shadowman, xPhantomx";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -58,13 +58,15 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime    = 1399897481;
+        genesis.nTime    = 1399986815;
         genesis.nBits    = 0x1d00ffff;
-        genesis.nNonce   = 2083236893;
+        genesis.nNonce   = 2435004141;
 
-        hashGenesisBlock = genesis.GetHash();	
-        assert(hashGenesisBlock == uint256("0xf74710e819d525ca24941a40c16f5573d829b3ea34f34034927448671a6dc7d2"));
-        assert(genesis.hashMerkleRoot == uint256("0xf923bcbdb67b7186933f3517b8af45c502e35889a2d204e1d2ec4109c74a44ad"));
+        hashGenesisBlock = genesis.GetHash();
+	printf("%s\n", hashGenesisBlock.ToString().c_str());	
+	printf("%s\n", genesis.hashMerkleRoot.ToString().c_str());
+        assert(hashGenesisBlock == uint256("0860072d2342765706a7078e8a9412646fe99947d5180d3ebe64e29d74b609aa"));
+        assert(genesis.hashMerkleRoot == uint256("bd4bb0e2e80a16560b20caab40d22005b517ee177a19421f6fe7fca80027f045"));
 	
         vSeeds.push_back(CDNSSeedData("latinumcoin.org", "seed.latinumcoin.org"));
         vSeeds.push_back(CDNSSeedData("latinumcoin.org", "seed2.latinumcoin.org"));
@@ -126,7 +128,8 @@ public:
         genesis.nTime = 1399897481;
         genesis.nNonce = 414098458;
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x5b29394730038a8a63767a86abf3329d5e804d14d3d3b481c0c85458fb72b148"));
+	printf("%s\n", hashGenesisBlock.ToString().c_str());	
+        assert(hashGenesisBlock == uint256("0xe899ea388445242ca607d03412124cb028f34cfc3bb3b6ec5e777a9220bbfedc"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -162,7 +165,8 @@ public:
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 5234;
         strDataDir = "regtest";
-        assert(hashGenesisBlock == uint256("0xc77aaf79b9f0b2e603107028ca9993d5ceb05232ae2fad6cbdf17c6881b479c6"));
+	printf("%s\n", hashGenesisBlock.ToString().c_str());	
+        assert(hashGenesisBlock == uint256("0x23a7970a41c390736ac21e58ffbf35a1c75090f894abc8a6af653d0dc99f3da0"));
 
         vSeeds.clear();  // Regtest mode doesn't have any DNS seeds.
     }
@@ -212,3 +216,4 @@ bool SelectParamsFromCommandLine() {
     }
     return true;
 }
+
